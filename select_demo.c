@@ -37,6 +37,7 @@ void child_process(void){
 }
 
 int main(int argc, char ** argv){
+	printf("FD_SETSIZE: %d", FD_SETSIZE);
 	char buffer[MAXBUF];
 	int fds[5];
 	struct sockaddr_in addr;
@@ -46,12 +47,12 @@ int main(int argc, char ** argv){
 	int sockfd,commfd;
 	fd_set rset;
 
-	for(i=0;i<5;i++){
-		if(fork() == 0){
-			child_process();
-			exit(0);
-		}
-	}
+	// for(i=0;i<5;i++){
+	// 	if(fork() == 0){
+	// 		child_process();
+	// 		exit(0);
+	// 	}
+	// }
 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	memset(&addr, 0, sizeof (addr));
